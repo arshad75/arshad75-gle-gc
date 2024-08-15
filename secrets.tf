@@ -1,0 +1,1 @@
+resource "aws_secretsmanager_secret" "eks_cluster_secret" { name = var.secret_name description = "Secret for the EKS cluster" kms_key_id = var.kms_key_id } resource "aws_secretsmanager_secret_version" "eks_cluster_secret_version" { secret_id = aws_secretsmanager_secret.eks_cluster_secret.id secret_string = jsonencode({ "username" = "admin", "password" = "password123" }) }
